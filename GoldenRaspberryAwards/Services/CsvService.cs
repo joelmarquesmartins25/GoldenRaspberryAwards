@@ -35,6 +35,12 @@
         /// <param name="filePath">Caminho do arquivo CSV</param>
         public void ImportMoviesFromCsv(string filePath)
         {
+            // Validar se o arquivo existe
+            if (!File.Exists(filePath))
+            {
+                return;
+            }
+
             // Define as configurações do CSV
             CsvConfiguration csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
             {
