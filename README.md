@@ -4,6 +4,15 @@
 Desenvolver uma API RESTful para possibilitar a leitura da lista de indicados e vencedores
 da categoria Pior Filme do Golden Raspberry Awards.
 
+## Funcionamento do Sistema
+
+- Ao iniciar, o sistema irá realizar a leitura do arquivo CSV "C:\Temp\movielist.csv" e irá inserir os registros em um banco de dados em memória;
+- Caso o arquivo não exista no caminho especificado, nenhum registro será criado;
+- Ao executar o projeto pelo Visual Studio, a página do Swagger será aberta com os endpoints disponíveis, permitindo realizar testes.
+- A API RESTful foi criada de acordo com o nível 2 de maturidade de Richardson:
+  - Todos os endpoints estão localizados em **api/movies** sendo necessário alterar apenas os verbos e o corpo da requisição conforme necessário.
+- Para atender ao requisito principal da API de localizar os produtores com maior e menor intervalo de tempo entre prêmios, o enpoint é **api/movies/intervals**
+
 ## 💻 Tecnologias Utilizadas
 
 - IDE: Microsoft Visual Studio Community 2022 (64-bit) - v17.5.0
@@ -14,24 +23,31 @@ da categoria Pior Filme do Golden Raspberry Awards.
 
 ![image](https://user-images.githubusercontent.com/111138372/222316348-eab2a0af-986d-4379-9bea-00d55d2dca2c.png)
 
-## Pré-Requisito
-- O arquivo CSV deve estar localizado em: C:\Temp com o nome de movielist.csv
-
 ## Como Rodar o Projeto
 
-1. Clone o repositório em sua máquina usando: `git clone https://github.com/joelmarquesmartins25/GoldenRaspberryAwards.git`
-2. Execute o build do projeto pelo terminal na pasta criada usando: `dotnet build GoldenRaspberryAwards.sln`
-3. Certifique-se de que o arquivo C:\Temp\movielist.csv existe
-4. Execute a aplicação com o comando: `dotnet run GoldenRaspberryAwards.csproj`
-5. A API estará rodando em http://localhost:7092
+1. Clonar o repositório em sua máquina usando: `git clone https://github.com/joelmarquesmartins25/GoldenRaspberryAwards.git`
+
+### Pelo Terminal
+2. Compilar a solution usando: `dotnet build GoldenRaspberryAwards\GoldenRaspberryAwards.sln`
+3. Executar a aplicação usando: `dotnet run --project GoldenRaspberryAwards\GoldenRaspberryAwards\GoldenRaspberryAwards.csproj`
+
+### Pelo Visual Studio
+2. Abrir a solução com o Visual Studio 2022
+3. Compilar e Executar a solution
+
+4. A API estará rodando em http://localhost:7092
 
 ## Testando a API
 
-Para testar a API, pode ser utilizado o Swagger, ou um programa como o Postman
+Para testar a API, pode ser utilizado o Swagger, ou um programa como o Postman ou ainda uma extensão de navegador como a Rested.
 
 ## Testes de Integração
-Para executar os testes de integração, está sendo utilizado um arquivo separado chamado movielist.csv na pasta Data do projeto de testes.
-Está validando os endpoints api/movies e api/movies/intervals
+
+- Para os testes de integração está sendo utilizado um arquivo separado chamado movielist.csv na pasta Data do projeto IntegrationTest.
+- Estão sendo validados os endpoints **api/movies** e **api/movies/intervals**
+- Para executar os testes de integração, use o comando `dotnet test GoldenRaspberryAwards\IntegrationTest\IntegrationTest.csproj`
+  - Ou utilize o Visual Studio, clique com direito no projeto IntegrationTest e em "Run Tests"
+- A execução dos testes de integração não necessita da API rodando para funcionar.
 
 ## Requisito da API e Resultados Esperados
 
