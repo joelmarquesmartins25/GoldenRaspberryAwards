@@ -35,6 +35,12 @@
                 }
             }
 
+            // Nenhum produtor obteve dois prêmios
+            if (!intervals.Any())
+            {
+                return new AwardIntervalResponse();
+            }
+
             // Obter os intervalos mínimo e máximo
             int min = intervals.Min(x => x.Interval);
             int max = intervals.Max(x => x.Interval);
